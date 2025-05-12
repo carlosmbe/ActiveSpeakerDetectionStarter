@@ -1,12 +1,14 @@
-# SwiftUI Speech Diarization Example 
+# SwiftUI Active Speaker Detection Example 
 
-**Note:** This project is currently under development and this README will be periodcally updated.
+**Note:** This project is based on my starter project for Speech Diarization so setting up largely follows the same process and is detailed below. [Here is the original repository](https://github.com/carlosmbe/SpeechDiarizationStarter)
 
 ## Project Overview
 
-This repository aims to refactor and simplify the SwiftUI example provided by [k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx), specifically focusing on Speech Diarization.
+This repository aims to implement an MVP Swift based implemtation of Active Speaker Detection by using Speech Diarization Models paired with Vision Models.
 
-I wrote a [companion article](https://carlosmbe.hashnode.dev/running-speech-models-with-swift-using-sherpa-onnx-for-apple-development) breaking down how and why I built this project.
+For a detailed tutorial and breakdown of my thoguhts behind this project read this article. [Note To Self Add Link When Published]
+
+I also wrote a [companion article](https://carlosmbe.hashnode.dev/running-speech-models-with-swift-using-sherpa-onnx-for-apple-development) breaking down the Speech Diarization aspect of this project.
 
 
 ## Getting Started
@@ -43,14 +45,8 @@ Clone the original [k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) r
 
 ## The Actual App
 
-The App requires you to select an Audio/Video file
+The App requires you to have a Video file named "`Clip.mp4`" in your bundle. Alternatively, you can rewrite the initalization of CombinedAnalysisView in the `ASDFiles` folder and load videos some other way.
 
-It then converts it to a format that the speech diarization model accepts
-
-Afterwards, run the model and the results will eventually replace the placehodler text
-
-
-https://github.com/user-attachments/assets/554b8154-c580-409a-958c-81aaca0c3a21
 
 ## Contributing
 
