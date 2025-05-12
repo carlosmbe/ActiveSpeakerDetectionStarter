@@ -1,17 +1,20 @@
 # SwiftUI Active Speaker Detection Example 
 
-**Note:** This project is based on my starter project for Speech Diarization so setting up largely follows the same process and is detailed below. [Here is the original repository](https://github.com/carlosmbe/SpeechDiarizationStarter)
+**Note:** This project builds upon my [Speech Diarization Starter Project](https://github.com/carlosmbe/SpeechDiarizationStarter). Setup follows a similar process. 
 
 ## Project Overview
 
-This repository aims to implement an MVP Swift based implemtation of Active Speaker Detection by using Speech Diarization Models paired with Vision Models.
+A Swift implementation of **Active Speaker Detection** combining:
+- Speech Diarization and Transcription models  
+- Vision models
 
-For a detailed tutorial and breakdown of my thoguhts behind this project read [this article](https://carlosmbe.hashnode.dev/active-speaker-detection-using-swift-for-ios-and-other-apple-platforms).
-
-I also wrote a [companion article](https://carlosmbe.hashnode.dev/running-speech-models-with-swift-using-sherpa-onnx-for-apple-development) breaking down the Speech Diarization aspect of this project.
-
+### Related Articles  
+- [Active Speaker Detection Using Swift](https://carlosmbe.hashnode.dev/active-speaker-detection-using-swift-for-ios-and-other-apple-platforms) - Full tutorial  
+- [Sherpa-Onnx for Apple Development](https://carlosmbe.hashnode.dev/running-speech-models-with-swift-using-sherpa-onnx-for-apple-development) - Speech Diarization deep dive  
 
 ## Getting Started
+
+### 1. Required Frameworks  
 
 If you clone and attempt to build this project immediately, you will encounter errors due to the absence of the required `onnxruntime` framework, which is too large to include directly in this repository.
 
