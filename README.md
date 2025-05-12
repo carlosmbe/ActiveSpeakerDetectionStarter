@@ -47,6 +47,15 @@ Clone the original [k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) r
 
 The App requires you to have a Video file named "`Clip.mp4`" in your bundle. Alternatively, you can rewrite the initalization of CombinedAnalysisView in the `ASDFiles` folder and load videos some other way.
 
+Also, most video file formats work, however, this app is using AVFoundation under the hood to process the audio files and Apple doens't seem to like certrain video codecs. So if you're getting an error during the conversion process or an error with opening the file. Try using another video file.
+
+
+
+
+https://github.com/user-attachments/assets/446daafe-3cf1-47ff-aeb2-d70b49f14f4e
+
+This video's copyright is owned by Trash Taste and is only being used for this demo under fair use and for educational purposes.
+
 
 ## Contributing
 
