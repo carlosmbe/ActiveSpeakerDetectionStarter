@@ -6,7 +6,7 @@
 
 This repository aims to implement an MVP Swift based implemtation of Active Speaker Detection by using Speech Diarization Models paired with Vision Models.
 
-For a detailed tutorial and breakdown of my thoguhts behind this project read this article. [Note To Self Add Link When Published]
+For a detailed tutorial and breakdown of my thoguhts behind this project read [this article](https://carlosmbe.hashnode.dev/active-speaker-detection-using-swift-for-ios-and-other-apple-platforms).
 
 I also wrote a [companion article](https://carlosmbe.hashnode.dev/running-speech-models-with-swift-using-sherpa-onnx-for-apple-development) breaking down the Speech Diarization aspect of this project.
 
@@ -47,10 +47,9 @@ Clone the original [k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) r
 
 The App requires you to have a Video file named "`Clip.mp4`" in your bundle. Alternatively, you can rewrite the initalization of CombinedAnalysisView in the `ASDFiles` folder and load videos some other way.
 
-Also, most video file formats work, however, this app is using AVFoundation under the hood to process the audio files and Apple doens't seem to like certrain video codecs. So if you're getting an error during the conversion process or an error with opening the file. Try using another video file.
+Also, most video file formats work, however, this app is using AVFoundation under the hood to process the video files and Apple doens't seem to like certrain video codecs. So if you're getting an error during the conversion process or an error with opening the file. Try using another video file.
 
-
-
+Here's a cool demo video of the app running. Make sure to unmute.
 
 https://github.com/user-attachments/assets/446daafe-3cf1-47ff-aeb2-d70b49f14f4e
 
