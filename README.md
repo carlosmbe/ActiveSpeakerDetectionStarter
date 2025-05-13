@@ -1,4 +1,4 @@
-# SwiftUI Active Speaker Detection Example 
+# Swifty Active Speaker Detection Example 
 
 **Note:** This project builds upon my [Speech Diarization Starter Project](https://github.com/carlosmbe/SpeechDiarizationStarter). Setup follows a similar process. 
 
