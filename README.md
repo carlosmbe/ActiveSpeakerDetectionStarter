@@ -1,56 +1,91 @@
-# SwiftUI Speech Diarization Example 
+# Swifty Active Speaker Detection Example 
 
-**Note:** This project is currently under development and this README will be periodcally updated.
+**Note:** This project builds upon my [Speech Diarization Starter Project](https://github.com/carlosmbe/SpeechDiarizationStarter). Setup follows a similar process. 
 
 ## Project Overview
 
-This repository aims to refactor and simplify the SwiftUI example provided by [k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx), specifically focusing on Speech Diarization.
+A Swift implementation of **Active Speaker Detection** combining:
+- Speech Diarization and Transcription models  
+- Vision models
 
-I wrote a [companion article](https://carlosmbe.hashnode.dev/running-speech-models-with-swift-using-sherpa-onnx-for-apple-development) breaking down how and why I built this project.
-
+### Related Articles  
+- [Active Speaker Detection Using Swift](https://carlosmbe.hashnode.dev/active-speaker-detection-using-swift-for-ios-and-other-apple-platforms) - Full tutorial  
+- [Sherpa-Onnx for Apple Development](https://carlosmbe.hashnode.dev/running-speech-models-with-swift-using-sherpa-onnx-for-apple-development) - Speech Diarization deep dive  
 
 ## Getting Started
 
-If you clone and attempt to build this project immediately, you will encounter errors due to the absence of the required `onnxruntime` framework, which is too large to include directly in this repository.
+### 1. Required Frameworks
 
-After adding the `onnxruntime` framework, you may still encounter errors. You will need to build and add `Sherpa-Onnx.xcframework` to your project. Follow the steps in **Building Directly From Sherpa Onnx**
+Before building this project, ensure the required frameworks are in place:
 
-Follow the same steps if don't have the `Sherpa-Onnx.xcframework` in your project.
+- **`onnxruntime`** is too large to be included directly. You must [download it manually](#download-required-framework).
+- **`Sherpa-Onnx.xcframework`** must also be built and added to your project. See [Building from Sherpa Onnx](#building-from-sherpa-onnx).
 
-After getting a successful build. You can test the app by picking a file containing Audio using the File Picker, otherwise you can change `line 18` in `ContentView` to hardcode a file in your bundle for testing.
+Without these, building the project will fail.
+
+> **Note:** After setup, test the app using the File Picker to load an audio file. Alternatively, hardcode a file path in `ContentView` (line 18) for testing.
+
+---
 
 ### Download Required Framework
 
-You can download the `onnxruntime` framework from the following link:
+Download the `onnxruntime` framework:
 
-[Download onnxruntime.xcframework-1.17.1.tar.bz2](https://github.com/csukuangfj/onnxruntime-libs/releases/download/v1.17.1/onnxruntime.xcframework-1.17.1.tar.bz2)
+[onnxruntime.xcframework-1.17.1.tar.bz2](https://github.com/csukuangfj/onnxruntime-libs/releases/download/v1.17.1/onnxruntime.xcframework-1.17.1.tar.bz2)
 
-Extract the downloaded archive and copy the `onnxruntime.xcframework` to your Xcode project directory.
+**Steps:**
+1. Extract the archive.
+2. Copy `onnxruntime.xcframework` into your Xcode project directory.
 
-### Building Directly From Sherpa Onnx
+---
 
-Clone the original [k2-fsa/sherpa-onnx](https://github.com/k2-fsa/sherpa-onnx) repository and follow its detailed [build instructions](https://k2-fsa.github.io/sherpa/onnx/ios/build-sherpa-onnx-swift.html).
+### Building from Sherpa Onnx
+
+To build `Sherpa-Onnx.xcframework`, follow these steps:
+
+Visit this link for more detailed [build instructions](https://k2-fsa.github.io/sherpa/onnx/ios/build-sherpa-onnx-swift.html).
 
 #### Summary of Build Steps
-1. Clone the reposity `git clone https://github.com/k2-fsa/sherpa-onnx`
-2. Enter the repo directory `cd sherpa-onnx`
-3. Run the ios build script with `./build-ios.sh`
-4. After the script completes, there will be a new folder named `build-ios`
-5. Copy `sherpa-onnx.xcframework` to your XCode project
-6. The `onnxruntime.xcframework` here in this folder is the same as the one from the last section, so if you haven't downloaded it. Copy it from `ios-onnxruntime -> 1.17.1 -> onnxruntime.xcframework`
+1. Clone the reposity 
+   ```bash
+    git clone https://github.com/k2-fsa/sherpa-onnx 
+2. Enter the repo directory
+    ```bash
+    cd sherpa-onnx
+   
+3. Run the ios build script with
+    ```bash
+    ./build-ios.sh
+   
+4. After the script completes, a `build-ios` folder will be created.
 
-<img width="334" alt="Screenshot 2025-04-10 at 1 01 38 PM" src="https://github.com/user-attachments/assets/aa1504b1-019f-4d49-8756-86d7915c3421" />
+5. Copy `sherpa-onnx.xcframework` from build-ios into your Xcode project.
+
+6. You’ll also find `onnxruntime.xcframework` in:
+    ```bash
+    ios-onnxruntime/1.17.1/onnxruntime.xcframework
+> This is the same xcframework from the previous section 
+   
+<img width="334" alt="Screenshot offiles to copy" src="https://github.com/user-attachments/assets/aa1504b1-019f-4d49-8756-86d7915c3421" />
 
 ## The Actual App
 
-The App requires you to select an Audio/Video file
+The app expects a video file named **`Clip.mp4`** in your app bundle.  
+If you'd prefer to load videos another way, you can modify the initialization of `CombinedAnalysisView` located in the `ASDFiles` folder.
 
-It then converts it to a format that the speech diarization model accepts
+> While most video formats work, this app uses **AVFoundation**, via AudioKit, to process video files. Some video codecs may not be supported by Apple.  
+> If you encounter errors during file conversion, try a different video file with a more common codec.
 
-Afterwards, run the model and the results will eventually replace the placehodler text
+---
 
+### Absolute Cinema (Demo Video)
 
-https://github.com/user-attachments/assets/554b8154-c580-409a-958c-81aaca0c3a21
+Here's a demo of the app in action (make sure to unmute):
+
+https://github.com/user-attachments/assets/446daafe-3cf1-47ff-aeb2-d70b49f14f4e
+
+> **Disclaimer:** This video being used for the demo is copyrighted by *Trash Taste* and is used here under *fair use* for demo and educational purposes only.
+
 
 ## Contributing
 
