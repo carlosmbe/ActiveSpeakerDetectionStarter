@@ -14,9 +14,22 @@
 		B6B8FBF02D70D5FA0081EF75 /* SpeechDiarizationStarter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeechDiarizationStarter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		B6723D0B2DD25AAE0099AD4B /* Exceptions for "SpeechDiarizationStarter" folder in "SpeechDiarizationStarter" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = B6B8FBEF2D70D5FA0081EF75 /* SpeechDiarizationStarter */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		B6723C722DD219790099AD4B /* SpeechDiarizationStarter */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				B6723D0B2DD25AAE0099AD4B /* Exceptions for "SpeechDiarizationStarter" folder in "SpeechDiarizationStarter" target */,
+			);
 			path = SpeechDiarizationStarter;
 			sourceTree = "<group>";
 		};
@@ -267,6 +280,8 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/SherpaFiles/Headers";
+				INFOPLIST_FILE = SpeechDiarizationStarter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -303,6 +318,8 @@
 				EXCLUDED_ARCHS = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				HEADER_SEARCH_PATHS = "${PROJECT_DIR}/SherpaFiles/Headers";
+				INFOPLIST_FILE = SpeechDiarizationStarter/Info.plist;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

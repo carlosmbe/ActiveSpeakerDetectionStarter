@@ -1,20 +1,22 @@
 //
-//  CombinedAnalysisView.swift
+//  AnalyzerWithFaces.swift
 //  SpeechDiarizationStarter
 //
-//  Created by Carlos Mbendera on 12/05/2025.
+//  Created by Carlos Mbendera on 16/05/2025.
 //
 
 import SwiftUI
 import AVKit
 
-struct CombinedAnalysisView: View {
+struct FacesCombinedAnalysisView: View {
+    
+    @StateObject private var realTimeAnalyzer: RealTimeVideoAnalyzer
+    
     @StateObject private var coordinator: CombinedAnalysisCoordinator
     
     private let player: AVPlayer
     
     @State private var currentTime: Double = 0
-    @State private var isPlaying: Bool = false
     @State private var isProcessing: Bool = true
     
     init() {
@@ -27,21 +29,34 @@ struct CombinedAnalysisView: View {
         
         player.pause()
         
+        let rtAnalyzer = RealTimeVideoAnalyzer(playerItem: playerItem)
         let coordinator = CombinedAnalysisCoordinator(videoURL: url)
         
         self.player = player
+        self._realTimeAnalyzer = StateObject(wrappedValue: rtAnalyzer)
         self._coordinator = StateObject(wrappedValue: coordinator)
     }
     
     var body: some View {
         VStack {
-            if !isProcessing {
-                VideoPlayer(player: player)
-                    .clipped()
-                    .zIndex(0)
-            } else {
-                ProgressView()
+            GeometryReader { proxy in
+                ZStack {
+                    
+                    if !isProcessing {
+                        VideoPlayer(player: player)
+                            .clipped()
+                            .zIndex(0)
+                    
+                    } else {
+                        ProgressView()
+                    }
+                    
+                    FaceBoundingBoxView(faceBoxes: realTimeAnalyzer.faceBoxes)
+                        .frame(width: proxy.size.width, height: proxy.size.height)
+                        .zIndex(1)
+                }
             }
+            .ignoresSafeArea()
             
             // Speaker information
             if !coordinator.analysisResult.preprocessingComplete {
@@ -75,7 +90,6 @@ struct CombinedAnalysisView: View {
             // Start preprocessing
             Task {
                 await coordinator.preprocessVideoAndAudio()
-                
                 // Print for debugging
                 isProcessing = false
                 print("Preprocessing complete. Matched speakers: \(coordinator.analysisResult.matchedSpeakers.count)")
@@ -90,6 +104,24 @@ struct CombinedAnalysisView: View {
                 // Update current speakers and their positions
                 coordinator.updateCurrentSpeakers(at: currentTime)
             }
+            
+            NotificationCenter.default.addObserver(
+                  forName: .AVPlayerItemDidPlayToEndTime,
+                  object: player.currentItem,
+                  queue: .main // Perform updates on the main queue
+            ) { _ in
+                // Playback has finished
+                realTimeAnalyzer.stopDisplayLink()
+            }
+        }
+        .onChange(of: player.timeControlStatus){ _ in
+            //Listen for changes in play/pause status of the video as we don't want the Display Link to run for every frame whilst the video is paused
+            if player.timeControlStatus == .paused {
+                realTimeAnalyzer.stopDisplayLink()
+            }else if player.timeControlStatus == .playing{
+                realTimeAnalyzer.startDisplayLink()
+            }
+            
         }
         .navigationTitle("Carlos' Active Speaker Detection Article ")
     }
