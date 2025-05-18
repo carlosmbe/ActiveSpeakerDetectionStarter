@@ -73,12 +73,15 @@ Visit this link for more detailed [build instructions](https://k2-fsa.github.io/
 The app expects a video file named **`Clip.mp4`** in your app bundle.  
 If you'd prefer to load videos another way, you can modify the initialization of `CombinedAnalysisView` located in the `ASDFiles` folder.
 
+If you'd like to get the Depth (Z Values) of media programmaticaly, reference my `depthstuff` branch of this repository [here](https://github.com/carlosmbe/ActiveSpeakerDetectionStarter/tree/depthstuff).
+
+
 > While most video formats work, this app uses **AVFoundation**, via AudioKit, to process video files. Some video codecs may not be supported by Apple.  
 > If you encounter errors during file conversion, try a different video file with a more common codec.
 
 ---
 
-### Absolute Cinema (Demo Video)
+### Absolute Cinema (Demo Videos)
 
 Here's a demo of the app in action (make sure to unmute):
 
@@ -86,6 +89,11 @@ https://github.com/user-attachments/assets/446daafe-3cf1-47ff-aeb2-d70b49f14f4e
 
 > **Disclaimer:** This video being used for the demo is copyrighted by *Trash Taste* and is used here under *fair use* for demo and educational purposes only.
 
+If you want face tracking boxes as the video plays, use `FacesCombinedAnalysisView`. The demo video below features that View (make sure to unmute):
+
+https://github.com/user-attachments/assets/1258b871-1aff-4792-bdac-edd4db551bc6
+
+> **Disclaimer:** This video being used for the demo is copyrighted by *Trash Taste* and is used here under *fair use* for demo and educational purposes only.
 
 ## Contributing
 
