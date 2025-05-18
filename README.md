@@ -1,4 +1,15 @@
-# Swifty Active Speaker Detection Example 
+# Depth Estimation for Swifty Active Speaker Detection  
+
+This branch has the code for the Depth Estimation implementation in Active Speaker Detection. I am using the Depth-Pro CoreML Model from Apple. Hence, to use this feature, the deployment target must have iOS 18 or greater.
+
+All relavent source code for Depth Estimation is in the `OptionalDepthEstimation` folder in `ASDFiles`
+
+Moreover, I downloaded the Model from Hugging Face at [this repo](https://huggingface.co/KeighBee/coreml-DepthPro/tree/main). My code is based on using `Depth-Pro.mlpackage` but a casual refactor should let you use the other versions.
+
+<img width="1728" alt="Screenshot 2025-05-18 at 5 43 26 AM" src="https://github.com/user-attachments/assets/c913cc46-3d17-4202-8395-af200baad984" />
+
+<img width="1021" alt="Screenshot 2025-05-18 at 5 50 57 AM" src="https://github.com/user-attachments/assets/329036ce-ea70-4bf3-9528-58fa340cbedf" />
+
 
 **Note:** This project builds upon my [Speech Diarization Starter Project](https://github.com/carlosmbe/SpeechDiarizationStarter). Setup follows a similar process. 
 
